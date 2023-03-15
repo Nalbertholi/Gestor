@@ -8,30 +8,14 @@ namespace BLL
 {
     public class UsuarioBLL
     {
-        public void Inserir(Usuario _usuario)
+        public void Inserir(Usuario _usuario, string _confirmaoDeSenha)
         {
-            if (_usuario.NomeUsuario.Length <= 3 || _usuario.NomeUsuario.Length >= 50)
-            {
-                throw new Exception("O nome de usuario deve ter mais de três caracteres.");
-            }
 
-            if (_usuario.NomeUsuario.Contains(" "))
-            {
-                throw new Exception("O nome de usuario não pode conter espaço.");
-            }
-
-            if (_usuario.NomeUsuario.Contains("1234567"))
-                throw new Exception("Não é permitido um número sequencial.");
-
-            if (_usuario.NomeUsuario.Length <= 3)
-                throw new Exception("O nome de usuario deve ter mais de três caracteres.");
-
-            if (_usuario.Senha.Length < 7 || _usuario.Senha.Length > 11)
-            {
-                throw new Exception("A senha deve ter entre 7 e 11 caracteres.");
-            }
-
-            //TODO: Validar se já existe um usuario com este nome.
+            ValidarDados(_usuario, _confirmacaoDeSenha);
+            Usuario usuario = new Usuario();
+            usuario = BuscarPorNomeUsuario(_usuario.NomeUsuario);
+            if (usuario.NomeUsuario == _usuario.NomeUsuario)
+                throw new Exception("Já existe um usuário com este nome");
 
             UsuarioDAL usuarioDAL = new UsuarioDAL();
             usuarioDAL.Inserir(_usuario);
@@ -52,17 +36,36 @@ namespace BLL
             return usuarioDAL.BuscarPorNomeUsuario(_nomeUsuario);
         }
 
-        public void Alterar(Usuario _usuario)
+        public void Alterar(Usuario _usuario, string _confirmacaoDeSenha)
         {
-
+            ValidarDados(_usuario, _confirmacaoDeSenha);
+            UsuarioDAL usuarioDAL = new UsuarioDAL();
+            usuarioDAL.Alterar(_usuario);
         }
 
         public void Excluir(int _id)
         {
             UsuarioDAL usuarioDAL = new UsuarioDAL
-            usuarioDAL
+            usuarioDAL.Excluir(_id);
         }
 
+        private static void ValidarDados(Usuario _usuario, string _confirmacaoDeSenha)
+        {
+            if (_usuario.NomeUsuario.Length <= 3 || _usuario.NomeUsuario.Length >= 50)
+                throw new Exception("O nome de usuario deve ter mais de três caracteres.");
 
+
+            if (_usuario.NomeUsuario.Contains(" "))
+                throw new Exception("O nome de usuario não pode conter espaço.");
+
+            if (_usuario.NomeUsuario.Contains("1234567"))
+                throw new Exception("Não é permitido um número sequencial.");
+
+            if (_usuario.NomeUsuario.Length <= 3)
+                throw new Exception("O nome de usuario deve ter mais de três caracteres.");
+
+            if (_usuario.Senha.Length < 7 || _usuario.Senha.Length > 11)
+                throw new Exception("A senha deve ter entre 7 e 11 caracteres.");
+        }
     }
 }

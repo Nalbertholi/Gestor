@@ -64,6 +64,12 @@
     <Compile Include="FormPrincipais.Designer.cs">
       <DependentUpon>FormPrincipais.cs</DependentUpon>
     </Compile>
+    <Compile Include="FromCadastroUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FromCadastroUsuario.Designer.cs">
+      <DependentUpon>FromCadastroUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormBuscarGrupoUsuario.resx">
@@ -74,6 +80,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormPrincipais.resx">
       <DependentUpon>FormPrincipais.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FromCadastroUsuario.resx">
+      <DependentUpon>FromCadastroUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
