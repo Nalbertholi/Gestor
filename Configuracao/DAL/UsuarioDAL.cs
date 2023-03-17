@@ -169,7 +169,7 @@ namespace DAL
                 cn.Close();
             }
         }
-        public void Excluir(Usuario _usuario)
+        public void Excluir(int _id)
         {
             SqlConnection cn = new SqlConnection();
 
@@ -180,7 +180,7 @@ namespace DAL
                 cmd.Connection = cn;
                 cmd.CommandText = @"DELETE FROM Usuario WHERE IDUsuario = @IDUsuario";
                 cmd.CommandType = System.Data.CommandType.Text;
-                cmd.Parameters.AddWithValue("@IDUsuario", _usuario.Id);
+                cmd.Parameters.AddWithValue("@IDUsuario", _id);
 
                 cn.Open();
                 cmd.ExecuteScalar();
@@ -196,7 +196,7 @@ namespace DAL
             }
         }
 
-        public Usuario BuscarPorId(string idUsuario)
+        public Usuario BuscarPorId(int _id)
         {
             SqlConnection cn = new SqlConnection();
             SqlCommand cmd = new SqlCommand();
@@ -207,7 +207,7 @@ namespace DAL
                 cn.ConnectionString = Conexao.StringDeConexao;
                 cmd.Connection = cn;
                 cmd.CommandText = @"SELECT Id, Nome, NomeUsuario, CPF, Email, Ativo FROM Usuario WHERE IdUsuario = @IdUsuario";
-                cmd.Parameters.AddWithValue("@IdUsuario", idUsuario);
+                cmd.Parameters.AddWithValue("@IdUsuario", _id);
                 //cmd.Parameters.AddWithValue("@NomeUsuario", _nomeUsuario);
                 cmd.CommandType = System.Data.CommandType.Text;
 
@@ -240,6 +240,10 @@ namespace DAL
             }
         }
 
+        public bool ExisteRelacionamento(int id, int idgrupo)
+        {
+            throw new NotImplementedException();
+        }
     }
     
 }

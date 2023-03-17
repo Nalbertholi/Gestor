@@ -43,7 +43,7 @@
             this.cPFTextBox = new System.Windows.Forms.TextBox();
             this.emailTextBox = new System.Windows.Forms.TextBox();
             this.ativoCheckBox = new System.Windows.Forms.CheckBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.confirmacaoTextBox = new System.Windows.Forms.TextBox();
             this.buttonSalvar = new System.Windows.Forms.Button();
             this.buttonCancelar = new System.Windows.Forms.Button();
             nomeLabel = new System.Windows.Forms.Label();
@@ -176,14 +176,14 @@
             this.ativoCheckBox.Text = "Ativo";
             this.ativoCheckBox.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // confirmacaoTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(527, 164);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PasswordChar = '*';
-            this.textBox1.Size = new System.Drawing.Size(208, 22);
-            this.textBox1.TabIndex = 14;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.confirmacaoTextBox.Location = new System.Drawing.Point(527, 164);
+            this.confirmacaoTextBox.Name = "confirmacaoTextBox";
+            this.confirmacaoTextBox.PasswordChar = '*';
+            this.confirmacaoTextBox.Size = new System.Drawing.Size(208, 22);
+            this.confirmacaoTextBox.TabIndex = 14;
+            this.confirmacaoTextBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // buttonSalvar
             // 
@@ -215,7 +215,7 @@
             this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.buttonSalvar);
             this.Controls.Add(label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.confirmacaoTextBox);
             this.Controls.Add(this.ativoCheckBox);
             this.Controls.Add(label1);
             this.Controls.Add(emailLabel);
@@ -245,7 +245,7 @@
         private System.Windows.Forms.TextBox cPFTextBox;
         private System.Windows.Forms.TextBox emailTextBox;
         private System.Windows.Forms.CheckBox ativoCheckBox;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox confirmacaoTextBox;
         private System.Windows.Forms.Button buttonSalvar;
         private System.Windows.Forms.Button buttonCancelar;
     }

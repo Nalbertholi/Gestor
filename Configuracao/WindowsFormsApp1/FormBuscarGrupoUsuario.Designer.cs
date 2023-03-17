@@ -206,6 +206,9 @@
             // 
             // grupoUsuarioDataGridView
             // 
+            this.grupoUsuarioDataGridView.AllowUserToAddRows = false;
+            this.grupoUsuarioDataGridView.AllowUserToDeleteRows = false;
+            this.grupoUsuarioDataGridView.AllowUserToOrderColumns = true;
             this.grupoUsuarioDataGridView.AutoGenerateColumns = false;
             this.grupoUsuarioDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grupoUsuarioDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -213,6 +216,7 @@
             this.grupoUsuarioDataGridView.DataSource = this.grupoUsuarioBindingSource;
             this.grupoUsuarioDataGridView.Location = new System.Drawing.Point(0, 112);
             this.grupoUsuarioDataGridView.Name = "grupoUsuarioDataGridView";
+            this.grupoUsuarioDataGridView.ReadOnly = true;
             this.grupoUsuarioDataGridView.RowHeadersWidth = 51;
             this.grupoUsuarioDataGridView.RowTemplate.Height = 24;
             this.grupoUsuarioDataGridView.Size = new System.Drawing.Size(720, 271);
@@ -225,6 +229,7 @@
             this.dataGridViewTextBoxColumn1.HeaderText = "NomeGrupo";
             this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             this.dataGridViewTextBoxColumn1.Width = 125;
             // 
             // permissoesBindingSource
@@ -234,6 +239,9 @@
             // 
             // permissoesDataGridView
             // 
+            this.permissoesDataGridView.AllowUserToAddRows = false;
+            this.permissoesDataGridView.AllowUserToDeleteRows = false;
+            this.permissoesDataGridView.AllowUserToOrderColumns = true;
             this.permissoesDataGridView.AutoGenerateColumns = false;
             this.permissoesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.permissoesDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -241,6 +249,7 @@
             this.permissoesDataGridView.DataSource = this.permissoesBindingSource;
             this.permissoesDataGridView.Location = new System.Drawing.Point(726, 112);
             this.permissoesDataGridView.Name = "permissoesDataGridView";
+            this.permissoesDataGridView.ReadOnly = true;
             this.permissoesDataGridView.RowHeadersWidth = 51;
             this.permissoesDataGridView.RowTemplate.Height = 24;
             this.permissoesDataGridView.Size = new System.Drawing.Size(656, 271);
@@ -252,6 +261,7 @@
             this.dataGridViewTextBoxColumn2.HeaderText = "Descricao";
             this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
             this.dataGridViewTextBoxColumn2.Width = 125;
             // 
             // textBox1

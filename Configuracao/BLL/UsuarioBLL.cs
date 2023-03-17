@@ -11,7 +11,7 @@ namespace BLL
         public void Inserir(Usuario _usuario, string _confirmaoDeSenha)
         {
 
-            ValidarDados(_usuario, _confirmacaoDeSenha);
+            ValidarDados(_usuario, _confirmaoDeSenha);
             Usuario usuario = new Usuario();
             usuario = BuscarPorNomeUsuario(_usuario.NomeUsuario);
             if (usuario.NomeUsuario == _usuario.NomeUsuario)
@@ -45,7 +45,7 @@ namespace BLL
 
         public void Excluir(int _id)
         {
-            UsuarioDAL usuarioDAL = new UsuarioDAL
+            UsuarioDAL usuarioDAL = new UsuarioDAL();
             usuarioDAL.Excluir(_id);
         }
 
@@ -66,6 +66,18 @@ namespace BLL
 
             if (_usuario.Senha.Length < 7 || _usuario.Senha.Length > 11)
                 throw new Exception("A senha deve ter entre 7 e 11 caracteres.");
+        }
+
+        public Usuario BuscarPorId(int _id)
+        {
+
+            UsuarioDAL usuarioDAL = new UsuarioDAL();
+            return usuarioDAL.BuscarPorId(_id);
+        }
+
+        public void AdicionarGrupo(int id1, object id2)
+        {
+            throw new NotImplementedException();
         }
     }
 }

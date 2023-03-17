@@ -14,14 +14,19 @@ namespace WindowsFormsApp1
 {
     public partial class FromCadastroUsuario : Form
     {
-        public FromCadastroUsuario()
+        private bool alterar;
+        public FromCadastroUsuario(bool _alterar = false, int _id=0)
         {
             InitializeComponent();
+            alterar = _alterar;
+
+            if (alterar)
+                usuarioBindingSource.DataSource = new UsuarioBLL().BuscarPorId(_id);
         }
 
         private void buttonCancelar_Click(object sender, EventArgs e)
         {
-
+            Close();
         }
 
         private void buttonSalvar_Click(object sender, EventArgs e)
@@ -36,6 +41,7 @@ namespace WindowsFormsApp1
                     usuarioBLL.Inserir((Usuario)usuarioBindingSource.Current, confirmacaoTextBox.Text);
                 else
                     usuarioBLL.Alterar((Usuario)usuarioBindingSource.Current, confirmacaoTextBox.Text);
+
                 MessageBox.Show("Registro salvo com sucesso");
                 Close();
             }
