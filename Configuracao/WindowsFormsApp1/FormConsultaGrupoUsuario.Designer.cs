@@ -32,7 +32,7 @@
             this.grupoUsuarioDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grupoUsuarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonSelecionar = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.buttonBuscar = new System.Windows.Forms.Button();
             this.textBoxBuscar = new System.Windows.Forms.TextBox();
@@ -72,14 +72,15 @@
             // 
             this.grupoUsuarioBindingSource.DataSource = typeof(Models.GrupoUsuario);
             // 
-            // button1
+            // buttonSelecionar
             // 
-            this.button1.Location = new System.Drawing.Point(623, 478);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(87, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Selecionar\r\n";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonSelecionar.Location = new System.Drawing.Point(623, 478);
+            this.buttonSelecionar.Name = "buttonSelecionar";
+            this.buttonSelecionar.Size = new System.Drawing.Size(87, 23);
+            this.buttonSelecionar.TabIndex = 2;
+            this.buttonSelecionar.Text = "Selecionar\r\n";
+            this.buttonSelecionar.UseVisualStyleBackColor = true;
+            this.buttonSelecionar.Click += new System.EventHandler(this.buttonSelecionar_Click);
             // 
             // button2
             // 
@@ -126,7 +127,7 @@
             this.Controls.Add(this.textBoxBuscar);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.buttonBuscar);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonSelecionar);
             this.Controls.Add(this.grupoUsuarioDataGridView);
             this.Name = "FormConsultaGrupoUsuario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -142,7 +143,7 @@
 
         private System.Windows.Forms.BindingSource grupoUsuarioBindingSource;
         private System.Windows.Forms.DataGridView grupoUsuarioDataGridView;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonSelecionar;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.Button buttonBuscar;

@@ -74,7 +74,7 @@ namespace WindowsFormsApp1
                 frm.ShowDialog();
                 UsuarioBLL usuarioBLL = new UsuarioBLL();
                 int id = ((Usuario)usuarioBindingSource.Current).Id;
-                usuarioBLL.AdicionarGrupo(id, frm.id);
+                usuarioBLL.AdicionarGrupo(id, frm.Id);
             }
         }
     }

@@ -75,9 +75,20 @@ namespace BLL
             return usuarioDAL.BuscarPorId(_id);
         }
 
-        public void AdicionarGrupo(int id1, object id2)
+        public void AdicionarGrupo(int _Id, int _Idgrupo)
         {
-            throw new NotImplementedException();
+            ValidarPermissao(10);
+            if (new UsuarioDAL().ExisteRelacionamento(_Id, _Idgrupo))
+                return;
+
+            UsuarioDAL usuarioDAL = new UsuarioDAL();
+            usuarioDAL.AdicionarGrupo(_Id, _Idgrupo);
+
+        }
+        public void ValidarPermissao(int _idPermissao)
+        {
+            if (!new UsuarioDAL().ValidarPermissao(Constantes.IdUsuarioLogado, _idPermissao))
+                throw new Exception("Você não tem permissão de executar. Procure o administrador do sistema.");
         }
     }
 }

@@ -8,11 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Models;
 
 namespace WindowsFormsApp1
 {
     public partial class FormConsultaGrupoUsuario : Form
     {
+        public int Id;
         public FormConsultaGrupoUsuario()
         {
             InitializeComponent();
@@ -21,6 +23,18 @@ namespace WindowsFormsApp1
         private void buttonBuscar_Click(object sender, EventArgs e)
         {
             GrupoUsuarioBLL grupoUsuarioBLL = new GrupoUsuarioBLL();
-            grupoUsuarioBindingSource.DataSource = grupoUsuarioBLL.BuscarPorNome(textBoxBuscar.Text);        }
+            grupoUsuarioBindingSource.DataSource = grupoUsuarioBLL.BuscarPorNome(textBoxBuscar.Text);        
+        }
+
+        private void buttonSelecionar_Click(object sender, EventArgs e)
+        {
+            if (grupoUsuarioBindingSource.Count > 0)
+            {
+                Id = ((GrupoUsuario)grupoUsuarioBindingSource.Current).Id;
+                Close();
+            }
+            else
+                MessageBox.Show("Não existe um grupo de usuário para ser selecionado.");
+        }
     }
 }
