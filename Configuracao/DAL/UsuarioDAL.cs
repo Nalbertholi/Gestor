@@ -44,7 +44,56 @@ namespace DAL
             }
 
         }
-        public Usuario BuscarUsuarioPorNome(string _nomeUsuario)
+
+        public List<Usuario> BuscarTodos()
+        {
+            List<Usuario> usuarios = new List<Usuario>();
+            Usuario usuario;
+
+            SqlConnection cn = new SqlConnection();
+            SqlCommand cmd = new SqlCommand();
+
+            try
+            {
+                cn.ConnectionString = Conexao.StringDeConexao;
+                cmd.Connection = cn;
+                cmd.CommandText = @"SELECT Id, Nome, CPF, Email, Ativo ";
+                cmd.CommandType = System.Data.CommandType.Text;
+                cn.Open();
+
+                using (SqlDataReader rd = cmd.ExecuteReader())
+                {
+                    while (rd.Read())
+                    {
+                        usuario = new Usuario();
+                        usuario.Id = Convert.ToInt32(rd["Id"]);
+                        usuario.Nome = rd["Nome"].ToString();
+                        usuario.NomeUsuario = rd["NomeUsuario"].ToString();
+                        usuario.CPF = rd["CPF"].ToString();
+                        usuario.Email = rd["Email"].ToString();
+                        usuario.Ativo = Convert.ToBoolean(rd["Ativo"]);
+                        GrupoUsuarioDAL grupoUsuarioDAL = new GrupoUsuarioDAL();
+                        usuario.GrupoUsuarios = grupoUsuarioDAL.BuscarPorIdUsuario(usuario.Id);
+
+                        usuarios.Add(usuario);
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocorreu um erro ao tentar buscar todos os usuário: " + ex.Message);
+
+            }
+            finally
+            {
+                cn.Close();
+            }
+
+            return usuarios;
+        }
+
+        public Usuario BuscarPorNomeUsuario(string _nomeUsuario)
         {
             SqlConnection cn = new SqlConnection();
             SqlCommand cmd = new SqlCommand();
@@ -87,57 +136,7 @@ namespace DAL
                 cn.Close();
             }
         }
-        public Usuario BuscarPorNomeUsuario(string _nomeUsuario)
-        {
-            return new Usuario();
-        }
-        public List<Usuario> BuscarTodos()
-        {
-            List<Usuario> usuarios = new List<Usuario>();
-            Usuario usuario;
-
-            SqlConnection cn = new SqlConnection();
-            SqlCommand cmd = new SqlCommand();
-
-            try
-            {
-                cn.ConnectionString = Conexao.StringDeConexao;
-                cmd.Connection = cn;
-                cmd.CommandText = @"SELECT Id, Nome, CPF, Email, Ativo ";
-                cmd.CommandType = System.Data.CommandType.Text;
-                cn.Open();
-
-                using (SqlDataReader rd = cmd.ExecuteReader())
-                {
-                    while (rd.Read())
-                    {
-                        usuario = new Usuario();
-                        usuario.Id = Convert.ToInt32(rd["Id"]);
-                        usuario.Nome = rd["Nome"].ToString();
-                        usuario.NomeUsuario = rd["NomeUsuario"].ToString();
-                        usuario.CPF = rd["CPF"].ToString();
-                        usuario.Email = rd["Email"].ToString();
-                        usuario.Ativo = Convert.ToBoolean(rd["Ativo"]);
-                        GrupoUsuarioDAL grupoUsuarioDAL = new GrupoUsuarioDAL();
-                        usuario.GrupoUsuarios = grupoUsuarioDAL.BuscarPorIdUsuario(usuario.Id);
-                       
-                        usuarios.Add(usuario);
-
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu um erro ao tentar buscar todos os usuário: " + ex.Message);
-                    
-            }
-            finally
-            {
-                cn.Close();
-            }
-
-            return usuarios;
-        }
+ 
         public void Alterar(Usuario _usuario)
         {
             SqlConnection cn = new SqlConnection();
@@ -170,6 +169,7 @@ namespace DAL
                 cn.Close();
             }
         }
+
         public void Excluir(int _id)
         {
             SqlConnection cn = new SqlConnection();

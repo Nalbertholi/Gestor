@@ -30,7 +30,7 @@ namespace WindowsFormsApp1
         {
             if (grupoUsuarioBindingSource.Count > 0)
             {
-                Id = ((GrupoUsuario)grupoUsuarioBindingSource.Current).Id;
+                Id = ((GrupoUsuario)grupoUsuarioBindingSource.Current).IdGrupoUsuario;
                 Close();
             }
             else
