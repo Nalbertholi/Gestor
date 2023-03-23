@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class GrupoUsuarioDAL 
-    { 
+    public class GrupoUsuarioDAL
+    {
         public void Inserir(GrupoUsuario _grupousuario)
         {
 
@@ -40,7 +40,7 @@ namespace DAL
             {
                 cn.Close();
             }
-            
+
         }
 
         public List<GrupoUsuario> BuscarPorIdUsuario(int id)
@@ -53,10 +53,10 @@ namespace DAL
             {
                 cn.ConnectionString = Conexao.StringDeConexao;
                 cmd.Connection = cn;
-                cmd.CommandText = @"SELECT TOP 100 GrupoUsuario.IdGrupoUsuario, GrupoUsuario.NomeGrupo FROM GrupoUsuario 
-                                    INNER JOIN UsuarioGrupoUsuario ON GrupoUsuario.IdGrupoUsuario = UsuarioGrupoUsuario.Id_GrupoUsuario 
-                                    WHERE IdGrupoUsuario like @IdGrupoUsuario";
-                cmd.Parameters.AddWithValue("@IdGrupoUsuario", "%" + id + "%");
+                cmd.CommandText = @"SELECT TOP 100 GrupoUsuario.ID_GRUPUSUARIO, GrupoUsuario.GrupoUsuario FROM GrupoUsuario 
+                                    INNER JOIN UsuarioGrupoUsuario ON GrupoUsuario.ID_GRUPUSUARIO = UsuarioGrupoUsuario.COD_GRUPOUSUARIO 
+                                    WHERE GrupoUsuario.ID_GRUPUSUARIO = @IdGrupoUsuario";
+                cmd.Parameters.AddWithValue("@IdGrupoUsuario", id);
                 cmd.CommandType = System.Data.CommandType.Text;
 
                 cn.Open();
@@ -66,8 +66,8 @@ namespace DAL
                     if (rd.Read())
                     {
                         grupoUsuario = new GrupoUsuario();
-                        grupoUsuario.IdGrupoUsuario = Convert.ToInt32(rd["IdGrupoUsuario"]);
-                        grupoUsuario.NomeGrupo = rd["NomeGrupo"].ToString();
+                        grupoUsuario.IdGrupoUsuario = Convert.ToInt32(rd["ID_GRUPUSUARIO"]);
+                        grupoUsuario.NomeGrupo = rd["GrupoUsuario"].ToString();
                         PermissaoDAL permissaoDAL = new PermissaoDAL();
                         grupoUsuario.Permissoes = permissaoDAL.BuscarPorIdGrupo(grupoUsuario.IdGrupoUsuario);
                         grupos.Add(grupoUsuario);

@@ -230,6 +230,7 @@
             this.Controls.Add(this.nomeTextBox);
             this.Name = "FromCadastroUsuario";
             this.Text = "FromCadastroUsuario";
+            this.Load += new System.EventHandler(this.FromCadastroUsuario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.usuarioBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

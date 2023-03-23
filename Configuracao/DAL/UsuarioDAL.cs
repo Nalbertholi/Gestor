@@ -57,7 +57,7 @@ namespace DAL
             {
                 cn.ConnectionString = Conexao.StringDeConexao;
                 cmd.Connection = cn;
-                cmd.CommandText = @"SELECT Id, Nome, CPF, Email, Ativo ";
+                cmd.CommandText = @"SELECT Id, Nome,NomeUsuario, CPF, Email, Ativo FROM Usuario";
                 cmd.CommandType = System.Data.CommandType.Text;
                 cn.Open();
 
@@ -103,9 +103,8 @@ namespace DAL
             {
                 cn.ConnectionString = Conexao.StringDeConexao;
                 cmd.Connection = cn;
-                cmd.CommandText = @"SELECT Id, Nome, CPF, Email, Ativo ";/*, IdUsuario = @IdUsuario";*/
-                cmd.Parameters.AddWithValue("@NomeUsuario", "%" + _nomeUsuario + "%");
-                //cmd.Parameters.AddWithValue("@IdUsuario", _nomeUsuario);
+                cmd.CommandText = @"SELECT Id, Nome,NomeUsuario,CPF, Email, Ativo FROM Usuario WHERE NomeUsuario = @NomeUsuario";/*, IdUsuario = @IdUsuario";*/
+                cmd.Parameters.AddWithValue("@NomeUsuario",_nomeUsuario );
                 cmd.CommandType = System.Data.CommandType.Text;
 
                 cn.Open();
@@ -146,7 +145,7 @@ namespace DAL
                 cn.ConnectionString = Conexao.StringDeConexao;
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = @"UPDATE Usuario SET Nome = @Nome, NomeUsuario = @NomeUsuario, CPF = @CPF, Email = @Email, Senha = @Senha, Ativo = @Ativo WHERE IdUsuario = @idUsuario";
+                cmd.CommandText = @"UPDATE Usuario SET Nome = @Nome, NomeUsuario = @NomeUsuario, CPF = @CPF, Email = @Email, Senha = @Senha, Ativo = @Ativo WHERE Id = @idUsuario";
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Parameters.AddWithValue("@Nome", _usuario.Nome);
                 cmd.Parameters.AddWithValue("@NomeUsuario", _usuario.NomeUsuario);
@@ -157,7 +156,7 @@ namespace DAL
                 cmd.Parameters.AddWithValue("@IdUsuario", _usuario.Id);
 
                 cn.Open();
-                cmd.BeginExecuteNonQuery();
+                cmd.ExecuteNonQuery();
 
             }
             catch (Exception ex)
@@ -179,7 +178,7 @@ namespace DAL
                 cn.ConnectionString = Conexao.StringDeConexao;
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = @"DELETE FROM Usuario WHERE IDUsuario = @IDUsuario";
+                cmd.CommandText = @"DELETE FROM Usuario WHERE ID = @IDUsuario";
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Parameters.AddWithValue("@IDUsuario", _id);
 
@@ -207,7 +206,7 @@ namespace DAL
             {
                 cn.ConnectionString = Conexao.StringDeConexao;
                 cmd.Connection = cn;
-                cmd.CommandText = @"SELECT Id, Nome, NomeUsuario, CPF, Email, Ativo FROM Usuario WHERE IdUsuario = @IdUsuario";
+                cmd.CommandText = @"SELECT Id, Nome, NomeUsuario, CPF, Email, Ativo FROM Usuario WHERE Id = @IdUsuario";
                 cmd.Parameters.AddWithValue("@IdUsuario", _id);
                 //cmd.Parameters.AddWithValue("@NomeUsuario", _nomeUsuario);
                 cmd.CommandType = System.Data.CommandType.Text;

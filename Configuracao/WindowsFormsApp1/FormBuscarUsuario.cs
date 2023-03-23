@@ -77,5 +77,10 @@ namespace WindowsFormsApp1
                 usuarioBLL.AdicionarGrupo(id, frm.Id);
             }
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

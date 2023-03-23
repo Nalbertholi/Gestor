@@ -55,5 +55,13 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void FromCadastroUsuario_Load(object sender, EventArgs e)
+        {
+            if (!alterar)
+            {
+                usuarioBindingSource.AddNew();
+            }
+        }
     }
 }
