@@ -46,7 +46,7 @@
             this.buttonAdicionarUsuário = new System.Windows.Forms.Button();
             this.buttonExcluir = new System.Windows.Forms.Button();
             this.buttonAdicionarGrupoUsuario = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.buttonExcluirGrupoUsuario = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.usuarioBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuarioDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grupoUsuariosDataGridView)).BeginInit();
@@ -224,22 +224,22 @@
             this.buttonAdicionarGrupoUsuario.UseVisualStyleBackColor = true;
             this.buttonAdicionarGrupoUsuario.Click += new System.EventHandler(this.buttonAdicionarGrupoUsuario_Click);
             // 
-            // button6
+            // buttonExcluirGrupoUsuario
             // 
-            this.button6.Location = new System.Drawing.Point(1287, 74);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 6;
-            this.button6.Text = "Excluir";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.buttonExcluirGrupoUsuario.Location = new System.Drawing.Point(1287, 74);
+            this.buttonExcluirGrupoUsuario.Name = "buttonExcluirGrupoUsuario";
+            this.buttonExcluirGrupoUsuario.Size = new System.Drawing.Size(75, 23);
+            this.buttonExcluirGrupoUsuario.TabIndex = 6;
+            this.buttonExcluirGrupoUsuario.Text = "Excluir";
+            this.buttonExcluirGrupoUsuario.UseVisualStyleBackColor = true;
+            this.buttonExcluirGrupoUsuario.Click += new System.EventHandler(this.buttonExcluirGrupoUsuario_Click);
             // 
             // FormBuscarUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1420, 552);
-            this.Controls.Add(this.button6);
+            this.Controls.Add(this.buttonExcluirGrupoUsuario);
             this.Controls.Add(this.buttonExcluir);
             this.Controls.Add(this.buttonAdicionarGrupoUsuario);
             this.Controls.Add(this.buttonAdicionarUsuário);
@@ -278,6 +278,6 @@
         private System.Windows.Forms.Button buttonAdicionarUsuário;
         private System.Windows.Forms.Button buttonExcluir;
         private System.Windows.Forms.Button buttonAdicionarGrupoUsuario;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button buttonExcluirGrupoUsuario;
     }
 }

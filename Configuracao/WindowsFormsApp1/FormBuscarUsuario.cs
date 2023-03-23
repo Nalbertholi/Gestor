@@ -78,5 +78,9 @@ namespace WindowsFormsApp1
             }
         }
 
+        private void buttonExcluirGrupoUsuario_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
