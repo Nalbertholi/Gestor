@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Models;
+using System;
+using System.IO;
 
 namespace DAL
 {
@@ -12,7 +10,14 @@ namespace DAL
         {
             get
             {
-                return @"User ID=SA;Initial Catalog=Gestao;Data Source=.\SQLEXPRESS2019A;Password=Senailab02";
+                if (String.IsNullOrEmpty(Constantes.StringDeConexao))
+                {
+                    if (File.Exists(Constantes.DiretorioStringConexao + Constantes.NomeArquivoConexao))
+                        Constantes.StringDeConexao = File.ReadAllText(Constantes.DiretorioStringConexao + Constantes.NomeArquivoConexao);
+                    else
+                        throw new Exception("É preciso criar a string de conexão") { Data = { { "Id", 1 } } };
+                }
+                return Constantes.StringDeConexao;
             }
         }
     }

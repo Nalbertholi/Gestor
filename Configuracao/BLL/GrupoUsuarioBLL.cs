@@ -1,59 +1,45 @@
-﻿using DAL;
-using Models;
-using System;
+﻿using Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
+using DAL;
 
 namespace BLL
 {
     public class GrupoUsuarioBLL
     {
-        public void Inserir(GrupoUsuario _grupousuario)
+        public void Inserir(GrupoUsuario _grupoUsuario)
         {
-            if (_grupousuario.NomeGrupo.Length <= 3 || _grupousuario.NomeGrupo.Length >= 150)
-                throw new Exception("O nome do grupo deverá conter de 3 a 150 caracteres.");
-
-            GrupoUsuarioDAL grupoUsuarioDAL = new GrupoUsuarioDAL();
-            grupoUsuarioDAL.Inserir(_grupousuario);
+            new UsuarioBLL().ValidarPermissao(6);
+            new GrupoUsuarioDAL().Inserir(_grupoUsuario);
         }
-        public List<GrupoUsuario> BuscarPorId(int _idGrupoUsuario)
+        public List<GrupoUsuario> BuscarTodos()
         {
-            GrupoUsuarioDAL grupoUsuarioDAL = new GrupoUsuarioDAL();
-            return grupoUsuarioDAL.BuscarPorIdUsuario(_idGrupoUsuario);
+            return new GrupoUsuarioDAL().BuscarTodos();
         }
-
-        public List<GrupoUsuario> BuscarTodosGrupos(string _grupoUsuario)
+        public List<GrupoUsuario> BuscarPorNomeGrupo(string _nomeGrupo)
         {
-            GrupoUsuarioDAL grupoUsuarioDAL = new GrupoUsuarioDAL();
-            return grupoUsuarioDAL.BuscarTodosGrupos(_grupoUsuario);
+            return new GrupoUsuarioDAL().BuscarPorNomeGrupo(_nomeGrupo);
         }
-
-        public List<GrupoUsuario> BuscarGrupoPorNome(string _nomeGrupo)
+        public List<GrupoUsuario> BuscarPorId(int _id)
         {
-            GrupoUsuarioDAL grupoUsuarioDAL = new GrupoUsuarioDAL();
-            return grupoUsuarioDAL.BuscarGrupoPorNome(_nomeGrupo);
+            return new GrupoUsuarioDAL().BuscarPorId(_id);
         }
-
         public void Alterar(GrupoUsuario _grupoUsuario)
         {
-            if (_grupoUsuario.NomeGrupo.Length <= 3 || _grupoUsuario.NomeGrupo.Length >= 150)
-                throw new Exception("O nome do grupo deverá conter de 3 a 150 caracteres.");
-
-            GrupoUsuarioDAL grupoUsuarioDAL = new GrupoUsuarioDAL();
-            grupoUsuarioDAL.Alterar(_grupoUsuario);
+            new GrupoUsuarioDAL().Alterar(_grupoUsuario);
         }
-
-        public void Excluir(GrupoUsuario _grupoUsuario)
+        public void Excluir(int _id)
         {
-            GrupoUsuarioDAL grupoUsuarioDAL = new GrupoUsuarioDAL();
-            grupoUsuarioDAL.Excluir(_grupoUsuario);
+            new GrupoUsuarioDAL().Excluir(_id);
         }
-
-        public List<GrupoUsuario> BuscarPorNome(string text)
+        public void AdicionarPermissao(int _idGrupo, int _idPermissao)
         {
-            throw new NotImplementedException();
+            if (!new GrupoUsuarioDAL().PermissaoVinculada(_idGrupo, _idPermissao))
+                new GrupoUsuarioDAL().AdicionarPermissao(_idGrupo, _idPermissao);
+        }
+        public void RemoverPermissao(int _idGrupo, int _idPermissao)
+        {
+            new GrupoUsuarioDAL().RemoverPermissao(_idGrupo, _idPermissao);
         }
     }
 }
