@@ -126,7 +126,7 @@ namespace DAL
             }
         }
         
-        public Cliente BuscarId(int _id)
+        public Cliente BuscarPorId(int _id)
         {
             Cliente cliente = new Cliente();
             SqlConnection cn = new SqlConnection(Conexao.StringDeConexao);
