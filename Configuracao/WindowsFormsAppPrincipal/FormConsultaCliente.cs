@@ -44,7 +44,19 @@ namespace WindowsFormsAppPrincipal
 
         private void buttonInserir_Click(object sender, EventArgs e)
         {
+            try
+            {
+                using (FormCadastroCliente frm = new FormCadastroCliente())
+                {
+                    frm.ShowDialog();
+                }
 
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void buttonExcluir_Click(object sender, EventArgs e)
@@ -58,6 +70,7 @@ namespace WindowsFormsAppPrincipal
                 }
                 int id = ((Cliente)clienteBindingSource.Current).Id;
                 new ClienteBLL().Excluir(id);
+                clienteBindingSource.RemoveCurrent();
             }
             catch(Exception ex)
             {

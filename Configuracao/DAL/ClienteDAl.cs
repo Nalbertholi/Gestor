@@ -34,19 +34,20 @@ namespace DAL
                 cn.Open();
 
                 cmd.ExecuteNonQuery();
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
-                throw new Exception("Ocorreu um erro ao tentar inserir um cliente no banco de dados.", ex) { Data = { { "Id",15} } };
+                throw new Exception("Ocorreu um erro ao tentar inserir um cliente no banco de dados.", ex) { Data = { { "Id", 15 } } };
             }
             finally
             {
-                cn.Open();
+                cn.Close();
             }
-           
+
         }
         public List<Cliente> BuscarTodos()
         {
-            
+
             List<Cliente> clienteList = new List<Cliente>();
             Cliente cliente = new Cliente();
             SqlConnection cn = new SqlConnection(Conexao.StringDeConexao);
@@ -75,7 +76,7 @@ namespace DAL
                 return clienteList;
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception("Ocorreu um erro ao tentar inserir um cliente no banco de dados.", ex) { Data = { { "Id", 16 } } };
             }
@@ -90,11 +91,11 @@ namespace DAL
             List<Cliente> clienteList = new List<Cliente>();
             Cliente cliente = new Cliente();
             SqlConnection cn = new SqlConnection(Conexao.StringDeConexao);
-            try 
-            { 
+            try
+            {
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = @"SELECT Nome, CPF, RG, Email, Fone FROM Cliente WHERE Nome LIKE @Nome ";
+                cmd.CommandText = @"SELECT Id, Nome, CPF, RG, Email, Fone FROM Cliente WHERE Nome LIKE @Nome ";
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Parameters.AddWithValue("@Nome", "%" + _nome + "%");
 
@@ -103,6 +104,7 @@ namespace DAL
                 {
                     while (rd.Read())
                     {
+                        cliente = new Cliente();
                         cliente.Id = (int)rd["Id"];
                         cliente.Nome = rd["Nome"].ToString();
                         cliente.CPF = rd["CPF"].ToString();
@@ -113,10 +115,10 @@ namespace DAL
                         clienteList.Add(cliente);
                     }
                 }
-                 return clienteList;
+                return clienteList;
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception("Ocorreu um erro ao tentar buscar cliente por nome no banco de dados.", ex) { Data = { { "Id", 17 } } };
             }
@@ -125,7 +127,7 @@ namespace DAL
                 cn.Close();
             }
         }
-        
+
         public Cliente BuscarPorId(int _id)
         {
             Cliente cliente = new Cliente();
@@ -172,7 +174,7 @@ namespace DAL
             {
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = @"SELECT Nome, CPF, RG, Email, Fone FROM Cliente WHERE CPF = @CPF";
+                cmd.CommandText = @"SELECT Id, Nome, CPF, RG, Email, Fone FROM Cliente WHERE CPF = @CPF";
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Parameters.AddWithValue("@CPF", _CPF);
 
@@ -181,6 +183,7 @@ namespace DAL
                 {
                     while (rd.Read())
                     {
+                        cliente = new Cliente();
                         cliente.Id = (int)rd["Id"];
                         cliente.Nome = rd["Nome"].ToString();
                         cliente.CPF = rd["CPF"].ToString();
@@ -234,10 +237,10 @@ namespace DAL
             }
             finally
             {
-                cn.Open();
+                cn.Close();
             }
         }
-        public void Excluir(int _id  )
+        public void Excluir(int _id)
         {
             SqlConnection cn = new SqlConnection(Conexao.StringDeConexao);
             try
@@ -259,7 +262,7 @@ namespace DAL
             }
             finally
             {
-                cn.Open();
+                cn.Close();
             }
         }
     }
