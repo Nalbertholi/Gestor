@@ -55,7 +55,7 @@ namespace DAL
             {
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = @"SELECT Nome, CPF, RG, Email, Fone FROM Cliente";
+                cmd.CommandText = @"SELECT Id, Nome, CPF, RG, Email, Fone FROM Cliente";
                 cmd.CommandType = System.Data.CommandType.Text;
 
                 cn.Open();
@@ -136,7 +136,7 @@ namespace DAL
             {
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = @"SELECT Nome, CPF, RG, Email, Fone FROM Cliente WHERE Nome = @Id";
+                cmd.CommandText = @"SELECT Id, Nome, CPF, RG, Email, Fone FROM Cliente WHERE Nome = @Id";
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Parameters.AddWithValue("@Id", _id);
 
@@ -220,6 +220,7 @@ namespace DAL
                                 WHERE Id = @Id;";
                 cmd.CommandType = System.Data.CommandType.Text;
 
+                cmd.Parameters.AddWithValue("@Id", _cliente.Id);
                 cmd.Parameters.AddWithValue("@Nome", _cliente.Nome);
                 cmd.Parameters.AddWithValue("@CPF", _cliente.CPF);
                 cmd.Parameters.AddWithValue("@RG", _cliente.RG);
