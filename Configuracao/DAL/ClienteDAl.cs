@@ -13,7 +13,7 @@ namespace DAL
 {
     public class ClienteDAl
     {
-        public void Inserir(Cliente _cliente)
+        public void Inserir(Cliente _cliente)  
         {
             SqlConnection cn = new SqlConnection(Conexao.StringDeConexao);
             try
@@ -55,7 +55,7 @@ namespace DAL
             {
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = @"SELECT Id, Nome, CPF, RG, Email, Fone FROM Cliente";
+                cmd.CommandText = @"SELECT Id, 0Nome, CPF, RG, Email, Fone FROM Cliente";
                 cmd.CommandType = System.Data.CommandType.Text;
 
                 cn.Open();
@@ -127,7 +127,6 @@ namespace DAL
                 cn.Close();
             }
         }
-
         public Cliente BuscarPorId(int _id)
         {
             Cliente cliente = new Cliente();
@@ -136,14 +135,14 @@ namespace DAL
             {
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = @"SELECT Id, Nome, CPF, RG, Email, Fone FROM Cliente WHERE Nome = @Id";
+                cmd.CommandText = @"SELECT Id, Nome, CPF, RG, Email, Fone FROM Cliente WHERE Id = @Id";
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Parameters.AddWithValue("@Id", _id);
 
                 cn.Open();
                 using (SqlDataReader rd = cmd.ExecuteReader())
                 {
-                    while (rd.Read())
+                    if(rd.Read())
                     {
                         cliente.Id = (int)rd["Id"];
                         cliente.Nome = rd["Nome"].ToString();
@@ -165,7 +164,7 @@ namespace DAL
             {
                 cn.Close();
             }
-        }
+        }   
         public Cliente BuscarPorCPF(string _CPF)
         {
             Cliente cliente = new Cliente();
@@ -181,9 +180,8 @@ namespace DAL
                 cn.Open();
                 using (SqlDataReader rd = cmd.ExecuteReader())
                 {
-                    while (rd.Read())
+                    if (rd.Read())
                     {
-                        cliente = new Cliente();
                         cliente.Id = (int)rd["Id"];
                         cliente.Nome = rd["Nome"].ToString();
                         cliente.CPF = rd["CPF"].ToString();
@@ -266,5 +264,7 @@ namespace DAL
                 cn.Close();
             }
         }
+
+        
     }
 }

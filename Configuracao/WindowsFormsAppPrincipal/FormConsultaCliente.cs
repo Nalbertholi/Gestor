@@ -26,6 +26,9 @@ namespace WindowsFormsAppPrincipal
                 switch (comboBoxBuscarPor.SelectedIndex)
                 {
                     case 0:
+                        if (string.IsNullOrEmpty(textBoxBuscar.Text))
+                            throw new Exception("Informe um Id para fazer a busca. ") { Data = { { "Id", 31 } } };
+
                         clienteBindingSource.DataSource = new ClienteBLL().BuscarPorId(Convert.ToInt32(textBoxBuscar.Text));
                         break;
                     case 1:
@@ -65,6 +68,7 @@ namespace WindowsFormsAppPrincipal
                 {
                     frm.ShowDialog();
                 }
+                buttonBuscar_Click(null, null);
             }
             catch (Exception ex)
             {
