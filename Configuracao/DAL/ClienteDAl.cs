@@ -55,7 +55,7 @@ namespace DAL
             {
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
-                cmd.CommandText = @"SELECT Id, 0Nome, CPF, RG, Email, Fone FROM Cliente";
+                cmd.CommandText = @"SELECT Id, Nome, CPF, RG, Email, Fone FROM Cliente";
                 cmd.CommandType = System.Data.CommandType.Text;
 
                 cn.Open();
