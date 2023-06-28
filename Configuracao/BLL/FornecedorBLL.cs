@@ -14,7 +14,7 @@ namespace BLL
         {
             new FornecedorDAL().Inserir(_fornecedor);
         }
-        public List<Fornecedor> BuscarTodos()
+        public List<Fornecedor> BuscarTodos(string text)
         {
             return new FornecedorDAL().BuscarTodos();
         }
@@ -26,7 +26,7 @@ namespace BLL
         {
             return new FornecedorDAL().BuscarPorNome(_nome);
         }
-        public Fornecedor BuscarPorWebsite(string _website)
+        public List<Fornecedor> BuscarPorWebsite(string _website)
         {
             return new FornecedorDAL().BuscarPorWebsite(_website);
         }
