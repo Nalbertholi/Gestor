@@ -6,55 +6,37 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsAppPrincipal
 {
-   
-    public partial class FormCadastroCliente : Form
+    public partial class FormCadastroFornecedor : Form
     {
-        int id;
-
-        public FormCadastroCliente(int _id = 0)
+        int cod;
+        public FormCadastroFornecedor(int _cod = 0)
         {
             InitializeComponent();
-            id = _id;
+            cod = _cod;
         }
 
         private void buttonSalvar_Click(object sender, EventArgs e)
         {
             try
             {
-                Cliente cliente = (Cliente)clienteBindingSource.Current;
+                Fornecedor cliente = (Fornecedor)fornecedorBindingSource.Current;
 
-                clienteBindingSource.EndEdit();
+                fornecedorBindingSource.EndEdit();
 
-                if (id == 0)
-                    new ClienteBLL().Inserir(cliente);
+                if (cod == 0)
+                    new FornecedorBLL().Inserir(cliente);
                 else
-                    new ClienteBLL().Alterar(cliente);
-                    
+                    new FornecedorBLL().Alterar(cliente);
+
                 MessageBox.Show("Registro salvo com sucesso!");
                 this.Close();
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void FormCadastroCliente_Load(object sender, EventArgs e)
-        {
-            try
-            {
-                if (id == 0)
-                    clienteBindingSource.AddNew();
-                else
-                    clienteBindingSource.DataSource = new ClienteBLL().BuscarPorId(id);
-                
             }
             catch (Exception ex)
             {
@@ -74,5 +56,21 @@ namespace WindowsFormsAppPrincipal
                 MessageBox.Show(ex.Message);
             }
         }
+        /*private void FormCadastroFornecedor_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cod == 0)
+                    fornecedorBindingSource.AddNew();
+                else
+                    fornecedorBindingSource.DataSource = new FornecedorBLL().BuscarPorId(cod);
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+        }*/
     }
 }

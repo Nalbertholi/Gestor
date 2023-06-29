@@ -172,7 +172,7 @@
             // 
             // buttonSelecionar
             // 
-            this.buttonSelecionar.Location = new System.Drawing.Point(486, 387);
+            this.buttonSelecionar.Location = new System.Drawing.Point(530, 387);
             this.buttonSelecionar.Name = "buttonSelecionar";
             this.buttonSelecionar.Size = new System.Drawing.Size(108, 23);
             this.buttonSelecionar.TabIndex = 14;
@@ -182,7 +182,7 @@
             // buttonCancelar
             // 
             this.buttonCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancelar.Location = new System.Drawing.Point(622, 387);
+            this.buttonCancelar.Location = new System.Drawing.Point(662, 387);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(107, 23);
             this.buttonCancelar.TabIndex = 15;

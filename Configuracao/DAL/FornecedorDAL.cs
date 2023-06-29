@@ -102,7 +102,7 @@ namespace DAL
                         fornecedor.Email = rd["Email"].ToString();
                         fornecedor.Fone = rd["Fone"].ToString();
                         fornecedor.Website = rd["Website"].ToString();
-                        
+
                         fornecedorList.Add(fornecedor);
                     }
                 }
@@ -120,7 +120,7 @@ namespace DAL
         }
         public Fornecedor BuscarPorId(int _id)
         {
-            Fornecedor fornecedor= new Fornecedor();
+            Fornecedor fornecedor = new Fornecedor();
             SqlConnection cn = new SqlConnection(Conexao.StringDeConexao);
             try
             {
@@ -148,7 +148,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("Ocorreu um erro ao tentar buscar cliente no banco de dados.", ex) { Data = { { "Id",   25 } } };
+                throw new Exception("Ocorreu um erro ao tentar buscar cliente no banco de dados.", ex) { Data = { { "Id", 25 } } };
             }
             finally
             {
@@ -169,7 +169,7 @@ namespace DAL
                 cmd.Parameters.AddWithValue("@Website", "%" + _website + "%");
 
                 cn.Open();
-                using (SqlDataReader rd = cmd.ExecuteReader())  
+                using (SqlDataReader rd = cmd.ExecuteReader())
                 {
                     while (rd.Read())
                     {
@@ -257,4 +257,3 @@ namespace DAL
         }
     }
 }
-

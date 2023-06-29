@@ -58,5 +58,7 @@ namespace WindowsFormsAppPrincipal
             if (e.KeyCode == Keys.Escape)
                 Close();
         }
+
+       
     }
 }
