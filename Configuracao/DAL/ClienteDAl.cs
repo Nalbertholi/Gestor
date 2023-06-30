@@ -63,6 +63,7 @@ namespace DAL
                 {
                     while (rd.Read())
                     {
+                        cliente = new Cliente();
                         cliente.Id = (int)rd["Id"];
                         cliente.Nome = rd["Nome"].ToString();
                         cliente.CPF = rd["CPF"].ToString();

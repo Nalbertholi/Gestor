@@ -106,6 +106,9 @@ namespace WindowsFormsAppPrincipal
                 int id = ((Cliente)clienteBindingSource.Current).Id;
                 new ClienteBLL().Excluir(id);
                 clienteBindingSource.RemoveCurrent();
+
+                MessageBox.Show("Registro Excluido com sucesso!");
+                Close();
             }
             catch(Exception ex)
             {

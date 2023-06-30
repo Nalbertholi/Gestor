@@ -1,14 +1,6 @@
 ﻿using BLL;
 using Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsAppPrincipal
@@ -26,14 +18,14 @@ namespace WindowsFormsAppPrincipal
         {
             try
             {
-                Fornecedor cliente = (Fornecedor)fornecedorBindingSource.Current;
+                Fornecedor fornecedor = (Fornecedor)fornecedorBindingSource.Current;
 
                 fornecedorBindingSource.EndEdit();
 
                 if (cod == 0)
-                    new FornecedorBLL().Inserir(cliente);
+                    new FornecedorBLL().Inserir(fornecedor);
                 else
-                    new FornecedorBLL().Alterar(cliente);
+                    new FornecedorBLL().Alterar(fornecedor);
 
                 MessageBox.Show("Registro salvo com sucesso!");
                 this.Close();
@@ -56,7 +48,8 @@ namespace WindowsFormsAppPrincipal
                 MessageBox.Show(ex.Message);
             }
         }
-        /*private void FormCadastroFornecedor_Load(object sender, EventArgs e)
+
+        private void FormCadastroFornecedor_Load(object sender, EventArgs e)
         {
             try
             {
@@ -64,13 +57,11 @@ namespace WindowsFormsAppPrincipal
                     fornecedorBindingSource.AddNew();
                 else
                     fornecedorBindingSource.DataSource = new FornecedorBLL().BuscarPorId(cod);
-
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.Message);
             }
-        }*/
+        }
     }
 }

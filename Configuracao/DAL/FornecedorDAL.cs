@@ -57,6 +57,7 @@ namespace DAL
                 {
                     while (rd.Read())
                     {
+                        fornecedor = new Fornecedor();
                         fornecedor.Id = (int)rd["Id"];
                         fornecedor.Nome = rd["Nome"].ToString();
                         fornecedor.Email = rd["Email"].ToString();

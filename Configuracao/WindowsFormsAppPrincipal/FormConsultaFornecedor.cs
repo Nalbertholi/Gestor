@@ -102,6 +102,9 @@ namespace WindowsFormsAppPrincipal
                 int id = ((Fornecedor)fornecedorBindingSource.Current).Id;
                 new FornecedorBLL().Excluir(id);
                 fornecedorBindingSource.RemoveCurrent();
+
+                MessageBox.Show("Registro Excluido com sucesso!");
+                Close();
             }
             catch (Exception ex)
             {

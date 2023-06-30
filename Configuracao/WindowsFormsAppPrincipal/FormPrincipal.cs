@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Models;
+using System;
 using System.Windows.Forms;
 
 namespace WindowsFormsAppPrincipal
@@ -62,6 +63,14 @@ namespace WindowsFormsAppPrincipal
         private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (FormConsultaCliente frm = new FormConsultaCliente())
+            {
+                frm.ShowDialog();
+            }
+        }
+
+        private void fornecedorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (FormConsultaFornecedor frm = new FormConsultaFornecedor())
             {
                 frm.ShowDialog();
             }

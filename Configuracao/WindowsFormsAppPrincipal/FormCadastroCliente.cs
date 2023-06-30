@@ -54,11 +54,9 @@ namespace WindowsFormsAppPrincipal
                     clienteBindingSource.AddNew();
                 else
                     clienteBindingSource.DataSource = new ClienteBLL().BuscarPorId(id);
-                
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.Message);
             }
         }

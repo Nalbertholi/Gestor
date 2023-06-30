@@ -31,13 +31,11 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label emailLabel;
             System.Windows.Forms.Label foneLabel;
-            System.Windows.Forms.Label idLabel;
             System.Windows.Forms.Label nomeLabel;
             System.Windows.Forms.Label websiteLabel;
             this.emailTextBox = new System.Windows.Forms.TextBox();
             this.fornecedorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.foneTextBox = new System.Windows.Forms.TextBox();
-            this.idTextBox = new System.Windows.Forms.TextBox();
             this.nomeTextBox = new System.Windows.Forms.TextBox();
             this.websiteTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -45,7 +43,6 @@
             this.buttonCancelar = new System.Windows.Forms.Button();
             emailLabel = new System.Windows.Forms.Label();
             foneLabel = new System.Windows.Forms.Label();
-            idLabel = new System.Windows.Forms.Label();
             nomeLabel = new System.Windows.Forms.Label();
             websiteLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.fornecedorBindingSource)).BeginInit();
@@ -54,7 +51,7 @@
             // emailLabel
             // 
             emailLabel.AutoSize = true;
-            emailLabel.Location = new System.Drawing.Point(423, 182);
+            emailLabel.Location = new System.Drawing.Point(423, 130);
             emailLabel.Name = "emailLabel";
             emailLabel.Size = new System.Drawing.Size(44, 16);
             emailLabel.TabIndex = 1;
@@ -63,20 +60,11 @@
             // foneLabel
             // 
             foneLabel.AutoSize = true;
-            foneLabel.Location = new System.Drawing.Point(582, 132);
+            foneLabel.Location = new System.Drawing.Point(426, 182);
             foneLabel.Name = "foneLabel";
             foneLabel.Size = new System.Drawing.Size(41, 16);
             foneLabel.TabIndex = 3;
             foneLabel.Text = "Fone:";
-            // 
-            // idLabel
-            // 
-            idLabel.AutoSize = true;
-            idLabel.Location = new System.Drawing.Point(418, 129);
-            idLabel.Name = "idLabel";
-            idLabel.Size = new System.Drawing.Size(21, 16);
-            idLabel.TabIndex = 5;
-            idLabel.Text = "Id:";
             // 
             // nomeLabel
             // 
@@ -99,7 +87,7 @@
             // emailTextBox
             // 
             this.emailTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.fornecedorBindingSource, "Email", true));
-            this.emailTextBox.Location = new System.Drawing.Point(473, 181);
+            this.emailTextBox.Location = new System.Drawing.Point(473, 129);
             this.emailTextBox.Name = "emailTextBox";
             this.emailTextBox.Size = new System.Drawing.Size(313, 22);
             this.emailTextBox.TabIndex = 2;
@@ -111,18 +99,10 @@
             // foneTextBox
             // 
             this.foneTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.fornecedorBindingSource, "Fone", true));
-            this.foneTextBox.Location = new System.Drawing.Point(629, 129);
+            this.foneTextBox.Location = new System.Drawing.Point(473, 179);
             this.foneTextBox.Name = "foneTextBox";
             this.foneTextBox.Size = new System.Drawing.Size(157, 22);
             this.foneTextBox.TabIndex = 4;
-            // 
-            // idTextBox
-            // 
-            this.idTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.fornecedorBindingSource, "Id", true));
-            this.idTextBox.Location = new System.Drawing.Point(445, 129);
-            this.idTextBox.Name = "idTextBox";
-            this.idTextBox.Size = new System.Drawing.Size(131, 22);
-            this.idTextBox.TabIndex = 6;
             // 
             // nomeTextBox
             // 
@@ -182,14 +162,13 @@
             this.Controls.Add(this.websiteTextBox);
             this.Controls.Add(nomeLabel);
             this.Controls.Add(this.nomeTextBox);
-            this.Controls.Add(idLabel);
-            this.Controls.Add(this.idTextBox);
             this.Controls.Add(foneLabel);
             this.Controls.Add(this.foneTextBox);
             this.Controls.Add(emailLabel);
             this.Controls.Add(this.emailTextBox);
             this.Name = "FormCadastroFornecedor";
             this.Text = "FormCadastroFornecedor";
+            this.Load += new System.EventHandler(this.FormCadastroFornecedor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.fornecedorBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -201,7 +180,6 @@
         private System.Windows.Forms.BindingSource fornecedorBindingSource;
         private System.Windows.Forms.TextBox emailTextBox;
         private System.Windows.Forms.TextBox foneTextBox;
-        private System.Windows.Forms.TextBox idTextBox;
         private System.Windows.Forms.TextBox nomeTextBox;
         private System.Windows.Forms.TextBox websiteTextBox;
         private System.Windows.Forms.Label label1;
